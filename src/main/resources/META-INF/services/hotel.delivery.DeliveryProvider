@@ -1,0 +1,3 @@
+hotel.delivery.StaffDeliveryProvider
+hotel.delivery.RobotDeliveryProvider
+hotel.delivery.LegacyDeliveryAdapter

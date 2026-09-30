@@ -1,0 +1,46 @@
+$ java -jar target/smart-hotel-1.0.0.jar standard staff:512 towels 2
+ACCEPTED STAFF-1 | room=512 | item=TOWELS | quantity=2 | notification=RING_BELL
+Exit code: 0
+
+$ java -jar target/smart-hotel-1.0.0.jar quiet staff:512 water 2
+ACCEPTED STAFF-1 | room=512 | item=WATER | quantity=2 | notification=SILENT
+Exit code: 0
+
+$ java -jar target/smart-hotel-1.0.0.jar standard robot:512 water 2
+ACCEPTED ROBOT-1 | room=512 | item=WATER | quantity=2 | notification=RING_BELL
+Exit code: 0
+
+$ java -jar target/smart-hotel-1.0.0.jar quiet robot:512 water 2
+ACCEPTED ROBOT-1 | room=512 | item=WATER | quantity=2 | notification=SILENT
+Exit code: 0
+
+$ java -jar target/smart-hotel-1.0.0.jar standard legacy:512 water 2
+ACCEPTED JOB-1 | room=512 | item=WATER | quantity=2 | notification=RING_BELL
+Exit code: 0
+
+$ java -jar target/smart-hotel-1.0.0.jar quiet legacy:512 breakfast 2
+ACCEPTED JOB-1 | room=512 | item=BREAKFAST | quantity=2 | notification=SILENT
+Exit code: 0
+
+$ java -jar target/smart-hotel-1.0.0.jar standard legacy:903 water 1
+DELIVERY FAILED [BUSY]: The delivery queue is full. Try again later.
+Exit code: 1
+
+$ java -jar target/smart-hotel-1.0.0.jar quiet legacy:905 towels 1
+DELIVERY FAILED [UNAVAILABLE]: The delivery service is unavailable.
+Exit code: 1
+
+$ java -jar target/smart-hotel-1.0.0.jar standard robot:512 breakfast 1
+DELIVERY FAILED [ITEM_UNAVAILABLE]: This delivery service cannot carry hot meals.
+Exit code: 1
+
+$ java -jar target/smart-hotel-1.0.0.jar quiet staff:512 towels 4
+DELIVERY FAILED [INVALID_ORDER]: Quiet service accepts at most three items per request.
+Exit code: 1
+
+$ java -jar target/smart-hotel-1.0.0.jar standard unknown:512 water 1
+INVALID INPUT: Unknown delivery provider: unknown
+Usage: java -jar target/smart-hotel-1.0.0.jar <mode> <provider:room> <amenity> <quantity>
+See README.md for registered modes, providers, and examples.
+Exit code: 2
+

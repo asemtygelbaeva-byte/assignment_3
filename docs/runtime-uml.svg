@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="930" viewBox="0 0 1500 930">
+<defs>
+ <marker id="triangle" markerWidth="14" markerHeight="14" refX="13" refY="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L13,7 L1,13 Z" fill="white" stroke="#334155" stroke-width="1.5"/></marker>
+ <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#334155" stroke-width="1.5"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#172033">
+<text x="40" y="43" font-size="26" font-weight="bold">Runtime registration and dependency injection</text>
+<text x="40" y="72" font-size="15" fill="#475569">UML class diagram 2 of 2   |   Application classes that select and construct the Bridge objects</text>
+<rect x="55" y="125" width="270" height="98" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="190.0" y="149" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">Main</text>
+<path d="M55,161 H325" stroke="#334155"/>
+<text x="67" y="184" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ main(String[]): void</text>
+<text x="67" y="207" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ run(args, out, err): int</text>
+<rect x="515" y="125" width="590" height="167" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="810.0" y="149" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">RoomServiceApplication</text>
+<path d="M515,161 H1105" stroke="#334155"/>
+<text x="527" y="184" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">- providers: Map&lt;String, DeliveryProvider&gt;</text>
+<text x="527" y="207" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">- services: Map&lt;String, RoomServiceFactory&gt;</text>
+<text x="527" y="230" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ RoomServiceApplication(providers, services)</text>
+<text x="527" y="253" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ discover(): RoomServiceApplication</text>
+<text x="527" y="276" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ request(mode, destination, amenity, quantity): DeliveryReceipt</text>
+<polyline points="325,180 515,180" fill="none" stroke="#334155" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+<text x="402" y="162" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">uses</text>
+<rect x="1150" y="435" width="290" height="116" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="1295.0" y="454" font-size="13" text-anchor="middle" font-weight="normal" font-style="normal">«interface»</text>
+<text x="1295.0" y="477" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">DeliveryProvider</text>
+<path d="M1150,489 H1440" stroke="#334155"/>
+<text x="1162" y="512" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ id(): String</text>
+<text x="1162" y="535" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ deliver(order): DeliveryReceipt</text>
+<polyline points="1105,220 1295,220 1295,435" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1150" y="203" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">providers 0..*</text>
+<rect x="480" y="435" width="450" height="116" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="705.0" y="454" font-size="13" text-anchor="middle" font-weight="normal" font-style="normal">«interface»</text>
+<text x="705.0" y="477" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">RoomServiceFactory</text>
+<path d="M480,489 H930" stroke="#334155"/>
+<text x="492" y="512" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ id(): String</text>
+<text x="492" y="535" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ create(DeliveryProvider): RoomService</text>
+<polyline points="760,292 760,435" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="775" y="380" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">services 0..*</text>
+<rect x="35" y="690" width="350" height="98" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="210.0" y="714" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">StandardServiceFactory</text>
+<path d="M35,726 H385" stroke="#334155"/>
+<text x="47" y="749" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ id(): String</text>
+<text x="47" y="772" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ create(provider): RoomService</text>
+<rect x="475" y="690" width="350" height="98" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="650.0" y="714" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">QuietServiceFactory</text>
+<path d="M475,726 H825" stroke="#334155"/>
+<text x="487" y="749" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ id(): String</text>
+<text x="487" y="772" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ create(provider): RoomService</text>
+<polyline points="320,690 320,610 595,610 595,551" fill="none" stroke="#334155" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#triangle)"/>
+<polyline points="650,690 650,551" fill="none" stroke="#334155" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#triangle)"/>
+<rect x="35" y="435" width="360" height="75" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="215.0" y="459" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">StandardRoomService</text>
+<path d="M35,471 H395" stroke="#334155"/>
+<text x="47" y="494" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ StandardRoomService(provider)</text>
+<polyline points="210,690 210,510" fill="none" stroke="#334155" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+<text x="226" y="650" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">creates</text>
+<rect x="935" y="690" width="350" height="75" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="1110.0" y="714" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">QuietRoomService</text>
+<path d="M935,726 H1285" stroke="#334155"/>
+<text x="947" y="749" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ QuietRoomService(provider)</text>
+<polyline points="825,738 935,738" fill="none" stroke="#334155" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+<text x="842" y="720" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">creates</text>
+<text x="55" y="855" font-size="16" text-anchor="start" font-weight="normal" font-style="normal">ServiceLoader discovers the implementations listed in META-INF/services. Each factory injects the provider selected from the destination.</text>
+<text x="55" y="884" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">Classes repeated from diagram 1 refer to the same types. Registry entries require unique lowercase IDs; no provider-specific switch is used.</text>
+</g></svg>

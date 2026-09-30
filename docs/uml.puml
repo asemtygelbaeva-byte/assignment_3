@@ -1,0 +1,135 @@
+@startuml patterns
+title Smart Hotel Room Service and Automation System
+skinparam classAttributeIconSize 0
+hide empty members
+
+abstract class RoomService {
+  - provider: DeliveryProvider
+  + request(request: RoomServiceRequest): DeliveryReceipt
+  # {abstract} createOrder(request: RoomServiceRequest): DeliveryOrder
+}
+class StandardRoomService {
+  + StandardRoomService(provider: DeliveryProvider)
+  # createOrder(request: RoomServiceRequest): DeliveryOrder
+}
+class QuietRoomService {
+  + QuietRoomService(provider: DeliveryProvider)
+  # createOrder(request: RoomServiceRequest): DeliveryOrder
+}
+interface DeliveryProvider {
+  + id(): String
+  + deliver(order: DeliveryOrder): DeliveryReceipt
+}
+class StaffDeliveryProvider {
+  + id(): String
+  + deliver(order: DeliveryOrder): DeliveryReceipt
+}
+class RobotDeliveryProvider {
+  + id(): String
+  + deliver(order: DeliveryOrder): DeliveryReceipt
+}
+class LegacyDeliveryAdapter {
+  - gateway: LegacyHotelGateway
+  + LegacyDeliveryAdapter()
+  + LegacyDeliveryAdapter(gateway: LegacyHotelGateway)
+  + id(): String
+  + deliver(order: DeliveryOrder): DeliveryReceipt
+}
+class LegacyHotelGateway {
+  + submit(sku: String, count: byte, roomCode: String, flags: int): String[]
+}
+class "LegacyHotelGateway.LinkFault" as LinkFault
+class DeliveryException {
+  - reason: Reason
+  + reason(): Reason
+}
+enum "DeliveryException.Reason" as Reason {
+  ROOM_NOT_FOUND
+  ITEM_UNAVAILABLE
+  BUSY
+  INVALID_ORDER
+  UNAVAILABLE
+  PROTOCOL_ERROR
+}
+class RoomServiceRequest <<record>> {
+  + room: int
+  + amenity: Amenity
+  + quantity: int
+}
+class DeliveryOrder <<record>> {
+  + request: RoomServiceRequest
+  + notification: NotificationMode
+}
+class DeliveryReceipt <<record>> {
+  + reference: String
+  + order: DeliveryOrder
+}
+enum Amenity {
+  TOWELS
+  WATER
+  BREAKFAST
+}
+enum NotificationMode {
+  RING_BELL
+  SILENT
+}
+
+RoomService <|-- StandardRoomService
+RoomService <|-- QuietRoomService
+RoomService --> "1" DeliveryProvider : provider
+DeliveryProvider <|.. StaffDeliveryProvider
+DeliveryProvider <|.. RobotDeliveryProvider
+DeliveryProvider <|.. LegacyDeliveryAdapter
+LegacyDeliveryAdapter --> "1" LegacyHotelGateway : gateway
+LegacyHotelGateway ..> LinkFault : throws
+LinkFault --|> Exception
+DeliveryException --|> Exception
+DeliveryException --> Reason
+LegacyDeliveryAdapter ..> DeliveryException : translates failures
+DeliveryProvider ..> DeliveryException : contract
+RoomService ..> DeliveryException : propagates
+DeliveryOrder --> "1" RoomServiceRequest : request
+DeliveryOrder --> NotificationMode
+RoomServiceRequest --> Amenity
+DeliveryReceipt --> "1" DeliveryOrder : order
+@enduml
+
+@startuml runtime
+title Runtime registration and dependency injection
+skinparam classAttributeIconSize 0
+hide empty members
+
+class Main {
+  + {static} main(args: String[]): void
+  + {static} run(args: String[], out: PrintStream, err: PrintStream): int
+}
+class RoomServiceApplication {
+  - providers: Map<String, DeliveryProvider>
+  - services: Map<String, RoomServiceFactory>
+  + RoomServiceApplication(providers, services)
+  + {static} discover(): RoomServiceApplication
+  + request(mode: String, destination: String, amenity: Amenity, quantity: int): DeliveryReceipt
+}
+interface RoomServiceFactory {
+  + id(): String
+  + create(provider: DeliveryProvider): RoomService
+}
+class StandardServiceFactory {
+  + id(): String
+  + create(provider: DeliveryProvider): RoomService
+}
+class QuietServiceFactory {
+  + id(): String
+  + create(provider: DeliveryProvider): RoomService
+}
+interface DeliveryProvider
+class StandardRoomService
+class QuietRoomService
+Main ..> RoomServiceApplication : uses
+RoomServiceApplication --> "0..*" DeliveryProvider : providers
+RoomServiceApplication --> "0..*" RoomServiceFactory : services
+RoomServiceFactory <|.. StandardServiceFactory
+RoomServiceFactory <|.. QuietServiceFactory
+StandardServiceFactory ..> StandardRoomService : creates
+QuietServiceFactory ..> QuietRoomService : creates
+@enduml

@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1360" viewBox="0 0 1500 1360">
+<defs>
+ <marker id="triangle" markerWidth="14" markerHeight="14" refX="13" refY="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L13,7 L1,13 Z" fill="white" stroke="#334155" stroke-width="1.5"/></marker>
+ <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#334155" stroke-width="1.5"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#172033">
+<text x="40" y="43" font-size="26" font-weight="bold">Smart Hotel Room Service and Automation System</text>
+<text x="40" y="72" font-size="15" fill="#475569">UML class diagram 1 of 2   |   Service policy, delivery implementations, and shared data</text>
+<rect x="55" y="125" width="450" height="139" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="280.0" y="144" font-size="13" text-anchor="middle" font-weight="normal" font-style="normal">«abstract»</text>
+<text x="280.0" y="167" font-size="17" text-anchor="middle" font-weight="bold" font-style="italic">RoomService</text>
+<path d="M55,179 H505" stroke="#334155"/>
+<text x="67" y="202" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">- provider: DeliveryProvider</text>
+<text x="67" y="225" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ request(RoomServiceRequest): DeliveryReceipt</text>
+<text x="67" y="248" font-size="14" text-anchor="start" font-weight="normal" font-style="normal"># createOrder(RoomServiceRequest): DeliveryOrder</text>
+<rect x="925" y="125" width="500" height="116" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="1175.0" y="144" font-size="13" text-anchor="middle" font-weight="normal" font-style="normal">«interface»</text>
+<text x="1175.0" y="167" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">DeliveryProvider</text>
+<path d="M925,179 H1425" stroke="#334155"/>
+<text x="937" y="202" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ id(): String</text>
+<text x="937" y="225" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ deliver(DeliveryOrder): DeliveryReceipt</text>
+<polyline points="505,225 925,225" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="665" y="211" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">provider 1</text>
+<rect x="35" y="390" width="360" height="98" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="215.0" y="414" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">StandardRoomService</text>
+<path d="M35,426 H395" stroke="#334155"/>
+<text x="47" y="449" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ StandardRoomService(DeliveryProvider)</text>
+<text x="47" y="472" font-size="14" text-anchor="start" font-weight="normal" font-style="normal"># createOrder(request): DeliveryOrder</text>
+<rect x="430" y="390" width="360" height="98" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="610.0" y="414" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">QuietRoomService</text>
+<path d="M430,426 H790" stroke="#334155"/>
+<text x="442" y="449" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ QuietRoomService(DeliveryProvider)</text>
+<text x="442" y="472" font-size="14" text-anchor="start" font-weight="normal" font-style="normal"># createOrder(request): DeliveryOrder</text>
+<polyline points="215,390 215,330 220,330 220,264" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#triangle)"/>
+<polyline points="610,390 610,310 380,310 380,264" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#triangle)"/>
+<rect x="835" y="390" width="280" height="98" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="975.0" y="414" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">StaffDeliveryProvider</text>
+<path d="M835,426 H1115" stroke="#334155"/>
+<text x="847" y="449" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ id(): String</text>
+<text x="847" y="472" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ deliver(order): DeliveryReceipt</text>
+<rect x="1180" y="390" width="280" height="98" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="1320.0" y="414" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">RobotDeliveryProvider</text>
+<path d="M1180,426 H1460" stroke="#334155"/>
+<text x="1192" y="449" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ id(): String</text>
+<text x="1192" y="472" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ deliver(order): DeliveryReceipt</text>
+<polyline points="975,390 975,280 1070,280 1070,241" fill="none" stroke="#334155" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#triangle)"/>
+<polyline points="1320,390 1320,280 1275,280 1275,241" fill="none" stroke="#334155" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#triangle)"/>
+<rect x="855" y="650" width="570" height="167" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="1140.0" y="674" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">LegacyDeliveryAdapter</text>
+<path d="M855,686 H1425" stroke="#334155"/>
+<text x="867" y="709" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">- gateway: LegacyHotelGateway</text>
+<text x="867" y="732" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ LegacyDeliveryAdapter()</text>
+<text x="867" y="755" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ LegacyDeliveryAdapter(LegacyHotelGateway)</text>
+<text x="867" y="778" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ id(): String</text>
+<text x="867" y="801" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ deliver(order): DeliveryReceipt</text>
+<polyline points="1140,650 1140,560 1478,560 1478,305 1390,305 1390,241" fill="none" stroke="#334155" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#triangle)"/>
+<rect x="75" y="650" width="650" height="121" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="400.0" y="674" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">LegacyHotelGateway</text>
+<path d="M75,686 H725" stroke="#334155"/>
+<text x="87" y="709" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ submit(sku: String, count: byte, roomCode: String, flags: int): String[]</text>
+<text x="87" y="732" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">  throws LinkFault</text>
+<text x="87" y="755" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">  nested LinkFault extends Exception</text>
+<polyline points="855,730 725,730" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="740" y="713" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">gateway 1</text>
+<rect x="55" y="865" width="530" height="144" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="320.0" y="889" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">DeliveryException</text>
+<path d="M55,901 H585" stroke="#334155"/>
+<text x="67" y="924" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">- reason: Reason</text>
+<text x="67" y="947" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ reason(): Reason</text>
+<text x="67" y="970" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">Reason: ROOM_NOT_FOUND, ITEM_UNAVAILABLE, BUSY,</text>
+<text x="67" y="993" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">INVALID_ORDER, UNAVAILABLE, PROTOCOL_ERROR</text>
+<text x="60" y="1050" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">extends java.lang.Exception; shared operational failure</text>
+<polyline points="855,795 780,795 780,840 620,840 620,920 585,920" fill="none" stroke="#334155" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+<text x="635" y="870" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">throws</text>
+<rect x="650" y="910" width="350" height="116" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="825.0" y="929" font-size="13" text-anchor="middle" font-weight="normal" font-style="normal">«record»</text>
+<text x="825.0" y="952" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">DeliveryOrder</text>
+<path d="M650,964 H1000" stroke="#334155"/>
+<text x="662" y="987" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ request: RoomServiceRequest</text>
+<text x="662" y="1010" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ notification: NotificationMode</text>
+<rect x="1085" y="910" width="350" height="116" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="1260.0" y="929" font-size="13" text-anchor="middle" font-weight="normal" font-style="normal">«record»</text>
+<text x="1260.0" y="952" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">DeliveryReceipt</text>
+<path d="M1085,964 H1435" stroke="#334155"/>
+<text x="1097" y="987" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ reference: String</text>
+<text x="1097" y="1010" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ order: DeliveryOrder</text>
+<polyline points="1085,990 1000,990" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1010" y="974" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">order 1</text>
+<rect x="650" y="1130" width="350" height="139" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="825.0" y="1149" font-size="13" text-anchor="middle" font-weight="normal" font-style="normal">«record»</text>
+<text x="825.0" y="1172" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">RoomServiceRequest</text>
+<path d="M650,1184 H1000" stroke="#334155"/>
+<text x="662" y="1207" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ room: int</text>
+<text x="662" y="1230" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ amenity: Amenity</text>
+<text x="662" y="1253" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">+ quantity: int</text>
+<polyline points="825,1026 825,1130" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="840" y="1090" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">request 1</text>
+<rect x="55" y="1125" width="220" height="139" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="165.0" y="1144" font-size="13" text-anchor="middle" font-weight="normal" font-style="normal">«enum»</text>
+<text x="165.0" y="1167" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">Amenity</text>
+<path d="M55,1179 H275" stroke="#334155"/>
+<text x="67" y="1202" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">TOWELS</text>
+<text x="67" y="1225" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">WATER</text>
+<text x="67" y="1248" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">BREAKFAST</text>
+<rect x="310" y="1125" width="275" height="116" rx="0" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="447.5" y="1144" font-size="13" text-anchor="middle" font-weight="normal" font-style="normal">«enum»</text>
+<text x="447.5" y="1167" font-size="17" text-anchor="middle" font-weight="bold" font-style="normal">NotificationMode</text>
+<path d="M310,1179 H585" stroke="#334155"/>
+<text x="322" y="1202" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">RING_BELL</text>
+<text x="322" y="1225" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">SILENT</text>
+<text x="1085" y="1160" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">Solid triangle line: inheritance</text>
+<text x="1085" y="1185" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">Dashed triangle line: interface realization</text>
+<text x="1085" y="1210" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">Solid open arrow: association</text>
+<text x="1085" y="1235" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">Dashed open arrow: dependency</text>
+<text x="55" y="1330" font-size="14" text-anchor="start" font-weight="normal" font-style="normal">Operations use abbreviated parameter names where types are shown by related records. Constructors and utility members may be omitted.</text>
+</g></svg>
